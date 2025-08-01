@@ -31,7 +31,7 @@ public class CreateCustomerHandler implements EventHandler {
         String id;
         if (lastCustomer.isPresent()) {
             String id_last = lastCustomer.get().getCustomerID();
-            Integer id_int = Integer.parseInt(id_last);
+            Long id_int = Long.parseLong(id_last);
             id = String.valueOf(id_int + 1);
         } else {
             id = "3000000001";
