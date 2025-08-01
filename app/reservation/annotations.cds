@@ -43,7 +43,7 @@ annotate service.Reservation with @(
             $Type : 'UI.ReferenceFacet',
             Label : '{i18n>Requests}',
             ID : 'Requests',
-            Target : 'Requests/@UI.LineItem#Requests',
+            Target : 'Requests/@UI.SelectionPresentationVariant#Requests',
         },
     ],
     UI.LineItem : [
@@ -223,5 +223,26 @@ annotate service.Request with @(
             Label : '{i18n>Setrequestcancelled}',
         },
     ],
+    UI.SelectionPresentationVariant #Requests : {
+        $Type : 'UI.SelectionPresentationVariantType',
+        PresentationVariant : {
+            $Type : 'UI.PresentationVariantType',
+            Visualizations : [
+                '@UI.LineItem#Requests',
+            ],
+            SortOrder : [
+                {
+                    $Type : 'Common.SortOrderType',
+                    Property : RequestDateTime,
+                    Descending : true,
+                },
+            ],
+        },
+        SelectionVariant : {
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+            ],
+        },
+    },
 );
 
