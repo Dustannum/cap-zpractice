@@ -70,5 +70,37 @@ annotate service.Room with @(
             Label : '{i18n>Setstatusavailable}',
         },
     ],
+    UI.SelectionFields : [
+        IsAvailable,
+    ],
+    UI.SelectionPresentationVariant #table : {
+        $Type : 'UI.SelectionPresentationVariantType',
+        PresentationVariant : {
+            $Type : 'UI.PresentationVariantType',
+            Visualizations : [
+                '@UI.LineItem',
+            ],
+        },
+        SelectionVariant : {
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+                {
+                    $Type : 'UI.SelectOptionType',
+                    PropertyName : IsAvailable,
+                    Ranges : [
+                        {
+                            Sign : #I,
+                            Option : #EQ,
+                            Low : true,
+                        },
+                    ],
+                },
+            ],
+        },
+    },
 );
+
+annotate service.Room with {
+    IsAvailable @Common.Label : 'IsAvailable'
+};
 

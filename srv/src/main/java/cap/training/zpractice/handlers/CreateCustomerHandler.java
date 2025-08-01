@@ -28,11 +28,15 @@ public class CreateCustomerHandler implements EventHandler {
         CqnSelect selectSql = Select.from(Customer_.CDS_NAME).columns(c -> c.get("CustomerID"))
                 .orderBy(o -> o.get("CustomerID").desc());
         Optional<Customer> lastCustomer = db.run(selectSql).first(Customer.class);
+/*         String draftID = customer.getCustomerID(); */
         String id;
         if (lastCustomer.isPresent()) {
             String id_last = lastCustomer.get().getCustomerID();
             Long id_int = Long.parseLong(id_last);
-            id = String.valueOf(id_int + 1);
+             id = String.valueOf(id_int + 1);
+/*        } else if (!(draftID.isEmpty())) {
+            Long id_int = Long.parseLong(draftID);
+            id = String.valueOf(id_int + 1); */
         } else {
             id = "3000000001";
         }
